@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Familiares | TableTop ET</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image">
+            </a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#top">Top Ventas</a></li>
+                <li class="dropdown">
+                    <a href="index.html#categorias">Categorias</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="estrategia.html">Estrategia</a></li>
+                        <li><a href="familiares.html">Familiares</a></li>
+                        <li><a href="fiesta.html">Fiesta</a></li>
+                        <li><a href="infantiles.html">Infantiles</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-content">
+            <h2>Categoria Familiares</h2>
+            <p>Partidas faciles de aprender, con dinamicas rapidas y mucha diversion para compartir.</p>
+            <a class="hero-link" href="index.html#top">Ver top ventas</a>
+        </div>
+    </section>
+
+    <section class="productos">
+        <div class="section-heading section-heading-left">
+            <span class="eyebrow">Categoria</span>
+            <h2>Juegos para reunir a todos</h2>
+            <p>Propuestas accesibles y entretenidas para distintas edades en una misma mesa.</p>
+        </div>
+
+        <div class="contenedor-productos">
+            <div class="card">
+                <img src="img/basta.png" alt="Basta">
+                <h3>Basta</h3>
+                <p>Desafia tu rapidez con categorias divertidas y partidas dinamicas.</p>
+                <span>$8.600</span>
+                <button onclick="agregarCarrito('Basta')">Agregar al carrito</button>
+            </div>
+
+            <div class="card">
+                <img src="img\jenga.png" alt="Jenga Familiar">
+                <h3>Jenga Familiar</h3>
+                <p>Pulso firme, risas y tension creciente en cada bloque que se mueve.</p>
+                <span>$14.990</span>
+                <button onclick="agregarCarrito('Jenga Familiar')">Agregar al carrito</button>
+            </div>
+
+            <div class="card">
+                <img src="img\EXPLODING KITTENS.png" alt="EXPLODING KITTENS">
+                <h3>EXPLODING KITTENS</h3>
+                <p>Entretenido y emocionante juego de cartas que tiene mucho que ver con la ruleta rusa.</p>
+                <span>$19.990</span>
+                <button onclick="agregarCarrito('EXPLODING KITTENS')">Agregar al carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

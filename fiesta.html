@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiesta | TableTop ET</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image">
+            </a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#top">Top Ventas</a></li>
+                <li class="dropdown">
+                    <a href="index.html#categorias">Categorias</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="estrategia.html">Estrategia</a></li>
+                        <li><a href="familiares.html">Familiares</a></li>
+                        <li><a href="fiesta.html">Fiesta</a></li>
+                        <li><a href="infantiles.html">Infantiles</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-content">
+            <h2>Categoria Fiesta</h2>
+            <p>Juegos de ritmo rapido, creatividad y muchas risas para grupos grandes o reuniones.</p>
+            <a class="hero-link" href="index.html#top">Ver top ventas</a>
+        </div>
+    </section>
+
+    <section class="productos">
+        <div class="section-heading section-heading-left">
+            <span class="eyebrow">Categoria</span>
+            <h2>Juegos para fiestas</h2>
+            <p>Opciones ideales para romper el hielo y mantener la energia alta.</p>
+        </div>
+
+        <div class="contenedor-productos">
+            <div class="card">
+                <img src="img\uno.png" alt="Uno">
+                <h3>Uno Party</h3>
+                <p>La clasica competencia de colores con reglas para grupos mas grandes.</p>
+                <span>$9.990</span>
+                <button onclick="agregarCarrito('Uno ')">Agregar al carrito</button>
+            </div>
+
+            <div class="card">
+                <img src="img\dixit.png" alt="Dixit">
+                <h3>Dixit</h3>
+                <p>Ilustraciones hermosas, pistas creativas y mucha imaginacion compartida.</p>
+                <span>$27.990</span>
+                <button onclick="agregarCarrito('Dixit')">Agregar al carrito</button>
+            </div>
+
+            <div class="card">
+                <img src="img\pictionary.png" alt="Pictionary Air">
+                <h3>Pictionary Air</h3>
+                <p>Dibuja en el aire y desafia a tu equipo a adivinar bajo presion.</p>
+                <span>$21.990</span>
+                <button onclick="agregarCarrito('Pictionary Air')">Agregar al carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

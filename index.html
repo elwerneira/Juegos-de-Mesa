@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TableTop ET</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image">
+            </a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#top">Top Ventas</a></li>
+                <li class="dropdown">
+                    <a href="index.html#categorias">Categorias</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="estrategia.html">Estrategia</a></li>
+                        <li><a href="familiares.html">Familiares</a></li>
+                        <li><a href="fiesta.html">Fiesta</a></li>
+                        <li><a href="infantiles.html">Infantiles</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h2>Los mejores juegos de mesa para toda la familia</h2>
+            <p>Descubre diversion, estrategia y aventuras increibles.</p>
+        </div>
+    </section>
+
+    <section class="productos" id="top">
+        <div class="section-heading">
+            <span class="eyebrow">Selecciones destacadas</span>
+            <h2>Top de los mas comprados</h2>
+            <p>Los favoritos de nuestra comunidad para noches de estrategia, risas y competencia.</p>
+        </div>
+
+        <div class="contenedor-productos">
+            <div class="card">
+                <img src="img/catan.png" alt="Catan">
+                <h3>Catan</h3>
+                <p>Expande tus aldeas, negocia recursos y conquista la isla con estrategia.</p>
+                <span>$39.990</span>
+                <button onclick="agregarCarrito('Catan')">Agregar al carrito</button>
+            </div>
+
+            <div class="card">
+                <img src="img/monopoly.png" alt="Monopoly">
+                <h3>Monopoly</h3>
+                <p>Compra, vende y arma tu imperio inmobiliario en cada partida.</p>
+                <span>$24.990</span>
+                <button onclick="agregarCarrito('Monopoly')">Agregar al carrito</button>
+            </div>
+
+            <div class="card">
+                <img src="img/basta.png" alt="Basta">
+                <h3>Basta</h3>
+                <p>Rapidez mental y mucha creatividad para ganar antes que el resto.</p>
+                <span>$8.600</span>
+                <button onclick="agregarCarrito('Basta')">Agregar al carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="categorias" id="categorias">
+        <div class="section-heading">
+            <span class="eyebrow">Explora el catalogo</span>
+            <h2>Categorias de juegos</h2>
+            <p>Ingresa a cada seccion desde el menu desplegable o desde estos accesos directos.</p>
+        </div>
+
+        <div class="contenedor-categorias">
+            <a class="categoria-link" href="estrategia.html">
+                <img src="img/catan.png" alt="Categoria Estrategia">
+                <div class="categoria-link-texto">
+                    <h3>Estrategia</h3>
+                    <p>Juegos para pensar cada movimiento.</p>
+                </div>
+            </a>
+
+            <a class="categoria-link" href="familiares.html">
+                <img src="img/basta.png" alt="Categoria Familiares">
+                <div class="categoria-link-texto">
+                    <h3>Familiares</h3>
+                    <p>Partidas rapidas y entretenidas para compartir.</p>
+                </div>
+            </a>
+
+            <a class="categoria-link" href="fiesta.html">
+                <img src="img/monopoly.png" alt="Categoria Fiesta">
+                <div class="categoria-link-texto">
+                    <h3>Fiesta</h3>
+                    <p>Mas risas, grupos grandes y mucha energia.</p>
+                </div>
+            </a>
+
+            <a class="categoria-link" href="infantiles.html">
+                <img src="img/catan.png" alt="Categoria Infantiles">
+                <div class="categoria-link-texto">
+                    <h3>Infantiles</h3>
+                    <p>Opciones accesibles para los mas pequenos.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
