@@ -27,6 +27,7 @@
                         <li><a href="infantiles.html">Infantiles</a></li>
                     </ul>
                 </li>
+                <li><a href="formulario.html">Registro</a></li>
             </ul>
         </nav>
     </header>
@@ -51,24 +52,34 @@
                 <img src="img/basta.png" alt="Basta">
                 <h3>Basta</h3>
                 <p>Desafia tu rapidez con categorias divertidas y partidas dinamicas.</p>
-                <span>$8.600</span>
-                <button onclick="agregarCarrito('Basta')">Agregar al carrito</button>
+                <div class="card-acciones">
+                    <span>$8.600</span>
+                    <button onclick="agregarCarrito('Basta')">Agregar al carrito</button>
+                </div>
             </div>
 
-            <div class="card">
-                <img src="img\jenga.png" alt="Jenga Familiar">
+            <div class="card card-oferta">
+                <img src="img/jenga.png" alt="Jenga Familiar">
                 <h3>Jenga Familiar</h3>
                 <p>Pulso firme, risas y tension creciente en cada bloque que se mueve.</p>
-                <span>$14.990</span>
-                <button onclick="agregarCarrito('Jenga Familiar')">Agregar al carrito</button>
+                <div class="estado-descuento">Oferta 10%</div>
+                <div class="card-acciones">
+                    <div class="precio-contenedor">
+                        <span class="precio-original">$14.990</span>
+                        <span class="precio-oferta">$13.490</span>
+                    </div>
+                    <button onclick="agregarCarrito('Jenga Familiar')">Agregar al carrito</button>
+                </div>
             </div>
 
             <div class="card">
-                <img src="img\EXPLODING KITTENS.png" alt="EXPLODING KITTENS">
+                <img src="img/EXPLODING KITTENS.png" alt="EXPLODING KITTENS">
                 <h3>EXPLODING KITTENS</h3>
                 <p>Entretenido y emocionante juego de cartas que tiene mucho que ver con la ruleta rusa.</p>
-                <span>$19.990</span>
-                <button onclick="agregarCarrito('EXPLODING KITTENS')">Agregar al carrito</button>
+                <div class="card-acciones">
+                    <span>$19.990</span>
+                    <button onclick="agregarCarrito('EXPLODING KITTENS')">Agregar al carrito</button>
+                </div>
             </div>
         </div>
     </section>

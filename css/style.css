@@ -1,3 +1,6 @@
+/* =========================
+   Global
+========================= */
 :root {
     --color-brand-dark: #182230;
     --color-brand-gold: #f4c542;
@@ -32,6 +35,9 @@
     --grid-gap: 30px;
 }
 
+/* =========================
+   Base
+========================= */
 * {
     margin: 0;
     padding: 0;
@@ -44,6 +50,9 @@ body {
     color: var(--color-text);
 }
 
+/* =========================
+   Header y Nav
+========================= */
 header {
     background-color: var(--color-brand-dark);
     color: var(--color-text-light);
@@ -94,6 +103,19 @@ nav a:hover {
     color: var(--color-brand-gold);
 }
 
+.dropdown {
+    position: relative;
+}
+
+.dropdown::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: 10px;
+}
+
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -112,19 +134,6 @@ nav a:hover {
     display: flex;
 }
 
-.dropdown {
-    position: relative;
-}
-
-.dropdown::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 100%;
-    height: 10px;
-}
-
 .dropdown-menu li {
     width: 100%;
 }
@@ -140,6 +149,9 @@ nav a:hover {
     color: var(--color-brand-gold);
 }
 
+/* =========================
+   Inicio
+========================= */
 .hero,
 .page-hero {
     min-height: 90vh;
@@ -161,11 +173,13 @@ nav a:hover {
 
 .hero-content {
     max-width: 720px;
+    animation: heroFadeUp 0.9s ease-out both;
 }
 
 .hero-content h2 {
     font-size: 50px;
     margin-bottom: 20px;
+    animation: heroGlow 4s ease-in-out infinite;
 }
 
 .hero-content p {
@@ -192,6 +206,9 @@ nav a:hover {
     background-color: var(--color-accent-hover);
 }
 
+/* =========================
+   General
+========================= */
 .productos,
 .categorias {
     padding: var(--section-padding);
@@ -235,6 +252,154 @@ nav a:hover {
     color: var(--color-text-soft);
 }
 
+/* =========================
+   Formulario
+========================= */
+.formulario-seccion {
+    padding: var(--section-padding);
+    background:
+        radial-gradient(circle at top left, rgba(244, 197, 66, 0.18), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(24, 34, 48, 0.14), transparent 28%),
+        linear-gradient(180deg, #f8f1e6 0%, #efe4d3 100%);
+}
+
+.formulario-card {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 36px;
+    background:
+        linear-gradient(135deg, rgba(255, 250, 241, 0.98), rgba(255, 255, 255, 0.94));
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(91, 75, 63, 0.14);
+    box-shadow: 0 18px 40px rgba(69, 44, 17, 0.16);
+    position: relative;
+    overflow: hidden;
+}
+
+.formulario-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 8px;
+    background: linear-gradient(90deg, var(--color-brand-gold), var(--color-accent), #f59e0b);
+}
+
+.formulario-card .section-heading {
+    margin-bottom: 28px;
+}
+
+.formulario-registro {
+
+    display: grid;
+    gap: 14px;
+}
+
+.campo-formulario {
+    display: grid;
+    gap: 8px;
+}
+
+.campo-password {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #d8c8b4;
+    border-radius: var(--radius-sm);
+    background: #fffdf8;
+    overflow: hidden;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.formulario-registro label {
+    font-weight: bold;
+    color: var(--color-brand-dark);
+    letter-spacing: 0.01em;
+}
+
+.formulario-registro input,
+.formulario-registro select,
+.formulario-registro textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #d8c8b4;
+    border-radius: var(--radius-sm);
+    background: #fffdf8;
+    color: var(--color-text);
+    font: inherit;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.formulario-registro input::placeholder,
+.formulario-registro textarea::placeholder {
+    color: #8b7766;
+}
+
+.formulario-registro input:focus,
+.formulario-registro select:focus,
+.formulario-registro textarea:focus {
+    outline: none;
+    border-color: var(--color-brand-gold);
+    box-shadow: 0 0 0 4px rgba(244, 197, 66, 0.18);
+    transform: translateY(-1px);
+}
+
+.formulario-registro textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.campo-password input {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    padding-right: 10px;
+}
+
+.campo-password input:focus {
+    border: none;
+    box-shadow: none;
+    transform: none;
+}
+
+.campo-password:focus-within {
+    border-color: var(--color-brand-gold);
+    box-shadow: 0 0 0 4px rgba(244, 197, 66, 0.18);
+    transform: translateY(-1px);
+}
+
+.mensaje-error {
+    min-height: 20px;
+    color: #b42318;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.mensaje-ayuda {
+    color: var(--color-text-soft);
+    font-size: 14px;
+}
+
+.campo-invalido {
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.12) !important;
+}
+
+.campo-valido {
+    border-color: #15803d !important;
+    box-shadow: 0 0 0 4px rgba(21, 128, 61, 0.12) !important;
+}
+
+.acciones-formulario {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+/* =========================
+   Componentes 
+========================= */
 .contenedor-productos,
 .contenedor-categorias {
     display: grid;
@@ -248,6 +413,17 @@ nav a:hover {
     overflow: hidden;
     box-shadow: var(--shadow-card);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
+    animation: cardReveal 0.75s ease both;
+}
+
+.contenedor-productos .card:nth-child(2),
+.contenedor-categorias > *:nth-child(2) {
+    animation-delay: 0.12s;
+}
+
+.contenedor-productos .card:nth-child(3),
+.contenedor-categorias > *:nth-child(3) {
+    animation-delay: 0.24s;
 }
 
 .card:hover,
@@ -275,6 +451,45 @@ nav a:hover {
     color: var(--color-text-soft);
 }
 
+.estado-descuento {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 20px 10px;
+    padding: 7px 12px;
+    border-radius: var(--radius-pill);
+    background: #f2e8d8;
+    color: #7b6145;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.card-oferta {
+    position: relative;
+    border: 1px solid rgba(244, 197, 66, 0.45);
+}
+
+.card-oferta::before {
+    content: "Destacado";
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 7px 10px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(135deg, #facc15, #f59e0b);
+    color: #3f2f12;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    animation: offerPulse 2.4s ease-in-out infinite;
+}
+
+.card-oferta .estado-descuento {
+    background: linear-gradient(90deg, #fff1bf, #ffe08a, #fff1bf);
+    background-size: 200% 100%;
+    color: #7a4b00;
+    animation: offerShimmer 2.8s linear infinite;
+}
+
 .card span {
     display: block;
     margin: 0 20px 16px;
@@ -283,8 +498,41 @@ nav a:hover {
     color: var(--color-success);
 }
 
-.card button {
+.card-acciones {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
     margin: 0 20px 22px;
+}
+
+.card-acciones > span {
+    margin: 0;
+}
+
+.precio-contenedor {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.precio-original {
+    font-size: 18px;
+    color: #9b8a78;
+    text-decoration: line-through;
+    font-weight: 600;
+}
+
+.precio-oferta {
+    font-size: 24px;
+    color: var(--color-success);
+    font-weight: bold;
+}
+
+.card button {
+    margin: 0;
     padding: 12px 20px;
     border: none;
     background-color: var(--color-button);
@@ -292,6 +540,7 @@ nav a:hover {
     border-radius: var(--radius-sm);
     cursor: pointer;
     transition: var(--transition-base);
+    animation: buttonFloat 3.2s ease-in-out infinite;
 }
 
 .card button:hover {
@@ -307,6 +556,7 @@ nav a:hover {
     text-decoration: none;
     box-shadow: var(--shadow-card);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
+    animation: cardReveal 0.75s ease both;
 }
 
 .categoria-link-texto {
@@ -323,6 +573,160 @@ nav a:hover {
     line-height: 1.5;
 }
 
+.acciones-formulario button {
+    width: auto;
+    min-width: 180px;
+    padding: 14px 24px;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(135deg, var(--color-brand-dark), #24364d);
+    color: var(--color-text-light);
+    font: inherit;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 14px 28px rgba(24, 34, 48, 0.24);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
+}
+
+.acciones-formulario button:hover {
+    background: linear-gradient(135deg, #223147, #314665);
+    transform: translateY(-2px);
+    box-shadow: 0 18px 30px rgba(24, 34, 48, 0.28);
+}
+
+.acciones-formulario button:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #c8b79f, #b59f84);
+    color: #2d241c;
+    box-shadow: 0 14px 28px rgba(91, 75, 63, 0.18);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #bca88b, #a89173);
+}
+
+.toggle-password {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8a7a68;
+    transition: opacity var(--transition-base), transform var(--transition-base), color var(--transition-base);
+}
+
+.toggle-password:hover {
+    background: transparent;
+    box-shadow: none;
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.toggle-password:focus-visible {
+    outline: 2px solid var(--color-brand-gold);
+    outline-offset: 2px;
+    border-radius: 50%;
+}
+
+.icono-ojo {
+    width: 20px;
+    height: 20px;
+    color: #857667;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.toggle-password.password-visible {
+    color: var(--color-brand-dark);
+}
+
+.toggle-password.password-visible .icono-ojo-linea {
+    display: none;
+}
+
+@keyframes heroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroGlow {
+    0%,
+    100% {
+        text-shadow: 0 0 0 rgba(244, 197, 66, 0);
+    }
+    50% {
+        text-shadow: 0 8px 24px rgba(244, 197, 66, 0.28);
+    }
+}
+
+@keyframes cardReveal {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes buttonFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes offerPulse {
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(245, 158, 11, 0);
+    }
+    50% {
+        transform: scale(1.04);
+        box-shadow: 0 10px 20px rgba(245, 158, 11, 0.22);
+    }
+}
+
+@keyframes offerShimmer {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* =========================
+    Responsividad
+========================= */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -368,11 +772,36 @@ nav a:hover {
     }
 
     .productos,
-    .categorias {
+    .categorias,
+    .formulario-seccion {
         padding: var(--section-padding-mobile);
+    }
+
+    .formulario-card {
+        padding: 24px;
     }
 
     .section-heading h2 {
         font-size: 32px;
+    }
+
+    .acciones-formulario button {
+        width: 100%;
+        padding: 13px 20px;
+    }
+
+    .card-acciones {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-acciones .precio-contenedor,
+    .card-acciones > span,
+    .card-acciones button {
+        width: 100%;
+    }
+
+    .campo-password {
+        position: relative;
     }
 }

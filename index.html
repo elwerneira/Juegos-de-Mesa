@@ -27,6 +27,7 @@
                         <li><a href="infantiles.html">Infantiles</a></li>
                     </ul>
                 </li>
+                <li><a href="formulario.html">Registro</a></li>
             </ul>
         </nav>
     </header>
@@ -46,28 +47,38 @@
         </div>
 
         <div class="contenedor-productos">
-            <div class="card">
+            <div class="card card-oferta">
                 <img src="img/catan.png" alt="Catan">
                 <h3>Catan</h3>
                 <p>Expande tus aldeas, negocia recursos y conquista la isla con estrategia.</p>
-                <span>$39.990</span>
-                <button onclick="agregarCarrito('Catan')">Agregar al carrito</button>
+                <div class="estado-descuento">Oferta 15%</div>
+                <div class="card-acciones">
+                    <div class="precio-contenedor">
+                        <span class="precio-original">$39.990</span>
+                        <span class="precio-oferta">$33.990</span>
+                    </div>
+                    <button onclick="agregarCarrito('Catan')">Agregar al carrito</button>
+                </div>
             </div>
 
             <div class="card">
                 <img src="img/monopoly.png" alt="Monopoly">
                 <h3>Monopoly</h3>
                 <p>Compra, vende y arma tu imperio inmobiliario en cada partida.</p>
-                <span>$24.990</span>
-                <button onclick="agregarCarrito('Monopoly')">Agregar al carrito</button>
+                <div class="card-acciones">
+                    <span>$24.990</span>
+                    <button onclick="agregarCarrito('Monopoly')">Agregar al carrito</button>
+                </div>
             </div>
 
             <div class="card">
                 <img src="img/basta.png" alt="Basta">
                 <h3>Basta</h3>
                 <p>Rapidez mental y mucha creatividad para ganar antes que el resto.</p>
-                <span>$8.600</span>
-                <button onclick="agregarCarrito('Basta')">Agregar al carrito</button>
+                <div class="card-acciones">
+                    <span>$8.600</span>
+                    <button onclick="agregarCarrito('Basta')">Agregar al carrito</button>
+                </div>
             </div>
         </div>
     </section>

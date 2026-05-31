@@ -27,6 +27,7 @@
                         <li><a href="infantiles.html">Infantiles</a></li>
                     </ul>
                 </li>
+                <li><a href="formulario.html">Registro</a></li>
             </ul>
         </nav>
     </header>
@@ -47,28 +48,38 @@
         </div>
 
         <div class="contenedor-productos">
-            <div class="card">
+            <div class="card card-oferta">
                 <img src="img/catan.png" alt="Catan">
                 <h3>Catan</h3>
                 <p>Intercambia recursos y construye rutas para dominar la isla.</p>
-                <span>$39.990</span>
-                <button onclick="agregarCarrito('Catan')">Agregar al carrito</button>
+                <div class="estado-descuento">Oferta 15%</div>
+                <div class="card-acciones">
+                    <div class="precio-contenedor">
+                        <span class="precio-original">$39.990</span>
+                        <span class="precio-oferta">$33.990</span>
+                    </div>
+                    <button onclick="agregarCarrito('Catan')">Agregar al carrito</button>
+                </div>
             </div>
 
             <div class="card">
-                <img src="img\ajedrez.png" alt="Ajedrez Premium">
+                <img src="img/ajedrez.png" alt="Ajedrez Premium">
                 <h3>Ajedrez Premium</h3>
                 <p>Un clasico de estrategia total con piezas elegantes y tablero resistente.</p>
-                <span>$18.990</span>
-                <button onclick="agregarCarrito('Ajedrez Premium')">Agregar al carrito</button>
+                <div class="card-acciones">
+                    <span>$18.990</span>
+                    <button onclick="agregarCarrito('Ajedrez Premium')">Agregar al carrito</button>
+                </div>
             </div>
 
             <div class="card">
-                <img src="img\risk.png" alt="Risk Clasico">
+                <img src="img/risk.png" alt="Risk Clasico">
                 <h3>Risk Clasico</h3>
                 <p>Conquista territorios y disena ofensivas para dominar el mundo.</p>
-                <span>$29.990</span>
-                <button onclick="agregarCarrito('Risk Clasico')">Agregar al carrito</button>
+                <div class="card-acciones">
+                    <span>$29.990</span>
+                    <button onclick="agregarCarrito('Risk Clasico')">Agregar al carrito</button>
+                </div>
             </div>
         </div>
     </section>

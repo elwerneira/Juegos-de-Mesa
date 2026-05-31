@@ -27,6 +27,7 @@
                         <li><a href="infantiles.html">Infantiles</a></li>
                     </ul>
                 </li>
+                <li><a href="formulario.html">Registro</a></li>
             </ul>
         </nav>
     </header>
@@ -48,27 +49,37 @@
 
         <div class="contenedor-productos">
             <div class="card">
-                <img src="img\uno.png" alt="Uno">
+                <img src="img/uno.png" alt="Uno">
                 <h3>Uno Party</h3>
                 <p>La clasica competencia de colores con reglas para grupos mas grandes.</p>
-                <span>$9.990</span>
-                <button onclick="agregarCarrito('Uno ')">Agregar al carrito</button>
+                <div class="card-acciones">
+                    <span>$9.990</span>
+                    <button onclick="agregarCarrito('Uno ')">Agregar al carrito</button>
+                </div>
             </div>
 
-            <div class="card">
-                <img src="img\dixit.png" alt="Dixit">
+            <div class="card card-oferta">
+                <img src="img/dixit.png" alt="Dixit">
                 <h3>Dixit</h3>
                 <p>Ilustraciones hermosas, pistas creativas y mucha imaginacion compartida.</p>
-                <span>$27.990</span>
-                <button onclick="agregarCarrito('Dixit')">Agregar al carrito</button>
+                <div class="estado-descuento">Oferta 20%</div>
+                <div class="card-acciones">
+                    <div class="precio-contenedor">
+                        <span class="precio-original">$27.990</span>
+                        <span class="precio-oferta">$22.390</span>
+                    </div>
+                    <button onclick="agregarCarrito('Dixit')">Agregar al carrito</button>
+                </div>
             </div>
 
             <div class="card">
-                <img src="img\pictionary.png" alt="Pictionary Air">
+                <img src="img/pictionary.png" alt="Pictionary Air">
                 <h3>Pictionary Air</h3>
                 <p>Dibuja en el aire y desafia a tu equipo a adivinar bajo presion.</p>
-                <span>$21.990</span>
-                <button onclick="agregarCarrito('Pictionary Air')">Agregar al carrito</button>
+                <div class="card-acciones">
+                    <span>$21.990</span>
+                    <button onclick="agregarCarrito('Pictionary Air')">Agregar al carrito</button>
+                </div>
             </div>
         </div>
     </section>
