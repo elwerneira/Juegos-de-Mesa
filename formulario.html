@@ -7,14 +7,20 @@
     <title>Registro | TableTop ET</title>
 </head>
 <body>
-    <header>
+    <header class="site-header">
         <div class="logo">
             <a href="index.html" class="logo-link">
                 <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image">
             </a>
         </div>
 
-        <nav>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="site-navigation">
             <ul>
                 <li><a href="index.html#inicio">Inicio</a></li>
                 <li><a href="index.html#top">Top Ventas</a></li>
@@ -27,7 +33,7 @@
                         <li><a href="infantiles.html">Infantiles</a></li>
                     </ul>
                 </li>
-                <li><a href="formulario.html">Registro</a></li>
+                <li><a href="loguin.html">Iniciar sesion</a></li>
             </ul>
         </nav>
     </header>
@@ -106,6 +112,7 @@
                     <button type="reset" class="btn btn-secondary">Limpiar</button>
                 </div>
             </form>
+            <div class="formulario-feedback" id="registroFeedback" aria-live="polite"></div>
         </div>
     </section>
 
