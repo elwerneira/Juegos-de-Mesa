@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel ADM | TableTop ET</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image">
+            </a>
+        </div>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="site-navigation">
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#top">Top Ventas</a></li>
+                <li class="dropdown">
+                    <a href="index.html#categorias">Categorias</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="estrategia.html">Estrategia</a></li>
+                        <li><a href="familiares.html">Familiares</a></li>
+                        <li><a href="fiesta.html">Fiesta</a></li>
+                        <li><a href="infantiles.html">Infantiles</a></li>
+                    </ul>
+                </li>
+                <li><a href="loguin.html">Iniciar sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="formulario-seccion">
+        <div class="formulario-card">
+            <div class="section-heading section-heading-left">
+                <span class="eyebrow">Panel ADM</span>
+                <h2>Administracion de TableTop ET</h2>
+                <p>Este espacio esta reservado para la cuenta administradora y sirve como base para gestionar el sitio.</p>
+            </div>
+
+            <div class="contenedor-categorias">
+                <article class="categoria-link">
+                    <div class="categoria-link-texto">
+                        <h3>Acceso exclusivo</h3>
+                        <p>Solo las sesiones con rol administrador pueden entrar a esta vista.</p>
+                    </div>
+                </article>
+
+                <article class="categoria-link">
+                    <div class="categoria-link-texto">
+                        <h3>Proximo paso</h3>
+                        <p>Aqui podemos agregar gestion de usuarios, inventario, pedidos o reportes.</p>
+                    </div>
+                </article>
+
+                <article class="categoria-link">
+                    <div class="categoria-link-texto">
+                        <h3>Cuenta recomendada</h3>
+                        <p>Usuario: <strong>admin</strong> | Correo: <strong>admin@tabletopet.cl</strong></p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar clave | TableTop ET</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image">
+            </a>
+        </div>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="site-navigation">
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#top">Top Ventas</a></li>
+                <li class="dropdown">
+                    <a href="index.html#categorias">Categorias</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="estrategia.html">Estrategia</a></li>
+                        <li><a href="familiares.html">Familiares</a></li>
+                        <li><a href="fiesta.html">Fiesta</a></li>
+                        <li><a href="infantiles.html">Infantiles</a></li>
+                    </ul>
+                </li>
+                <li><a href="loguin.html">Iniciar sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="formulario-seccion">
+        <div class="formulario-card">
+            <div class="section-heading section-heading-left">
+                <span class="eyebrow">Recuperacion</span>
+                <h2>Cambiar contrasena</h2>
+                <p>Ingresa tu usuario o correo y define una nueva contrasena para recuperar tu acceso.</p>
+            </div>
+
+            <form class="formulario-registro" id="formularioRecuperar" novalidate>
+                <div class="campo-formulario">
+                    <label for="recuperarUsuario" class="form-label">Usuario o correo</label>
+                    <input type="text" id="recuperarUsuario" name="recuperarUsuario" placeholder="Ingresa tu usuario o correo">
+                    <div class="mensaje-error" id="errorRecuperarUsuario"></div>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="recuperarPassword" class="form-label">Nueva contrasena</label>
+                    <div class="campo-password">
+                        <input type="password" id="recuperarPassword" name="recuperarPassword" placeholder="Entre 6 y 18 caracteres">
+                        <button type="button" class="toggle-password" data-target="recuperarPassword" aria-label="Mostrar u ocultar contrasena">
+                            <svg class="icono-ojo" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path class="icono-ojo-linea" d="M4 4l16 16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="mensaje-error" id="errorRecuperarPassword"></div>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="recuperarConfirmarPassword" class="form-label">Confirmar nueva contrasena</label>
+                    <div class="campo-password">
+                        <input type="password" id="recuperarConfirmarPassword" name="recuperarConfirmarPassword" placeholder="Repite tu nueva contrasena">
+                        <button type="button" class="toggle-password" data-target="recuperarConfirmarPassword" aria-label="Mostrar u ocultar contrasena">
+                            <svg class="icono-ojo" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path class="icono-ojo-linea" d="M4 4l16 16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="mensaje-error" id="errorRecuperarConfirmarPassword"></div>
+                </div>
+
+                <div class="acciones-formulario">
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <button type="reset" class="btn btn-secondary">Limpiar</button>
+                    <a class="btn btn-registro" href="loguin.html">Iniciar sesion</a>
+                </div>
+            </form>
+
+            <div class="formulario-feedback" id="recuperarFeedback" aria-live="polite"></div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

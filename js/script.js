@@ -5,6 +5,13 @@ function agregarCarrito(nombreJuego) {
 document.addEventListener('DOMContentLoaded', function () {
     const STORAGE_USERS_KEY = 'tabletop_users';
     const STORAGE_SESSION_KEY = 'tabletop_session';
+    const ADMIN_DEFAULT_USER = {
+        nombre: 'Administrador',
+        usuario: 'admin',
+        correo: 'admin@tabletopet.cl',
+        password: 'Admin123',
+        rol: 'admin'
+    };
 
     const feedbackRegistro = document.getElementById('registroFeedback');
     const feedbackLogin = document.getElementById('loginFeedback');
@@ -25,6 +32,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function guardarUsuarios(usuarios) {
         localStorage.setItem(STORAGE_USERS_KEY, JSON.stringify(usuarios));
+    }
+
+    function asegurarUsuarioAdmin() {
+        const usuarios = leerUsuarios();
+        const indiceAdmin = usuarios.findIndex(function (usuario) {
+            return normalizarTexto(usuario.usuario) === normalizarTexto(ADMIN_DEFAULT_USER.usuario) ||
+                normalizarTexto(usuario.correo) === normalizarTexto(ADMIN_DEFAULT_USER.correo);
+        });
+
+        if (indiceAdmin !== -1) {
+            usuarios[indiceAdmin] = Object.assign({}, usuarios[indiceAdmin], {
+                rol: 'admin'
+            });
+            guardarUsuarios(usuarios);
+            return;
+        }
+
+        usuarios.push(ADMIN_DEFAULT_USER);
+        guardarUsuarios(usuarios);
     }
 
     function leerSesion() {
@@ -188,6 +214,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function actualizarNavbarSesion() {
         const enlaceSesion = document.querySelector('nav a[href="loguin.html"]');
         const sesionActiva = leerSesion();
+        const navLista = document.querySelector('#site-navigation ul');
+        let enlaceAdmin = document.getElementById('navAdminLink');
 
         if (!enlaceSesion) {
             return;
@@ -201,6 +229,40 @@ document.addEventListener('DOMContentLoaded', function () {
             enlaceSesion.textContent = 'Iniciar sesion';
             enlaceSesion.href = 'loguin.html';
             delete enlaceSesion.dataset.sessionAction;
+        }
+
+        if (navLista) {
+            if (sesionActiva && sesionActiva.rol === 'admin') {
+                if (!enlaceAdmin) {
+                    const itemAdmin = document.createElement('li');
+                    enlaceAdmin = document.createElement('a');
+                    enlaceAdmin.id = 'navAdminLink';
+                    enlaceAdmin.href = 'admin.html';
+                    enlaceAdmin.textContent = 'Panel ADM';
+                    itemAdmin.appendChild(enlaceAdmin);
+                    navLista.insertBefore(itemAdmin, navLista.lastElementChild);
+                }
+            } else if (enlaceAdmin && enlaceAdmin.parentElement) {
+                enlaceAdmin.parentElement.remove();
+            }
+        }
+    }
+
+    function protegerVistaAdmin() {
+        const paginaActual = window.location.pathname.split('/').pop().toLowerCase();
+        const sesionActiva = leerSesion();
+
+        if (paginaActual !== 'admin.html') {
+            return;
+        }
+
+        if (!sesionActiva) {
+            window.location.href = 'loguin.html';
+            return;
+        }
+
+        if (sesionActiva.rol !== 'admin') {
+            window.location.href = 'index.html';
         }
     }
 
@@ -257,6 +319,27 @@ document.addEventListener('DOMContentLoaded', function () {
         }) || null;
     }
 
+    function actualizarPasswordUsuario(identificador, nuevaPassword) {
+        const usuarios = leerUsuarios();
+        const indiceUsuario = usuarios.findIndex(function (usuario) {
+            return normalizarTexto(usuario.usuario) === normalizarTexto(identificador) ||
+                normalizarTexto(usuario.correo) === normalizarTexto(identificador);
+        });
+
+        if (indiceUsuario === -1) {
+            return { ok: false, mensaje: 'No existe una cuenta asociada a ese usuario o correo.' };
+        }
+
+        usuarios[indiceUsuario].password = nuevaPassword;
+        guardarUsuarios(usuarios);
+
+        return {
+            ok: true,
+            mensaje: 'Contrasena actualizada correctamente. Ya puedes iniciar sesion con tu nueva clave.',
+            usuario: usuarios[indiceUsuario]
+        };
+    }
+
     if (formularioRegistro) {
         const campos = {
             nombre: document.getElementById('nombre'),
@@ -291,7 +374,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 correo: campos.correo.value.trim(),
                 password: campos.password.value,
                 fechaNacimiento: campos.fechaNacimiento.value,
-                direccion: campos.direccion.value.trim()
+                direccion: campos.direccion.value.trim(),
+                rol: 'cliente'
             });
 
             if (!resultado.ok) {
@@ -302,12 +386,18 @@ document.addEventListener('DOMContentLoaded', function () {
             guardarSesion({
                 nombre: campos.nombre.value.trim(),
                 usuario: campos.usuario.value.trim(),
-                correo: campos.correo.value.trim()
+                correo: campos.correo.value.trim(),
+                rol: 'cliente'
             });
 
             actualizarNavbarSesion();
 
             mostrarFeedback(feedbackRegistro, resultado.mensaje, 'exito');
+
+            setTimeout(function () {
+                window.location.href = 'index.html';
+            }, 1200);
+
             campos.nombre.value = '';
             campos.usuario.value = '';
             campos.correo.value = '';
@@ -359,6 +449,9 @@ document.addEventListener('DOMContentLoaded', function () {
             btnRecuperarClave.textContent = 'Recuperar clave';
             btnRecuperarClave.type = 'button';
             btnRecuperarClave.id = 'btnRecuperarClave';
+            if (btnRecuperarClave.tagName === 'A') {
+                btnRecuperarClave.setAttribute('href', 'recuperar.html');
+            }
         }
 
         loginForm.addEventListener('submit', function (event) {
@@ -397,7 +490,8 @@ document.addEventListener('DOMContentLoaded', function () {
             guardarSesion({
                 nombre: usuarioEncontrado.nombre,
                 usuario: usuarioEncontrado.usuario,
-                correo: usuarioEncontrado.correo
+                correo: usuarioEncontrado.correo,
+                rol: usuarioEncontrado.rol || 'cliente'
             });
 
             mostrarFeedback(feedbackLogin, 'Sesion iniciada correctamente.', 'exito');
@@ -411,33 +505,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (btnRecuperarClave) {
             btnRecuperarClave.addEventListener('click', function (event) {
                 event.preventDefault();
-
-                const identificador = loginUsuario.value.trim();
-
-                limpiarEstado(loginUsuario, errorLoginUsuario);
-                limpiarEstado(loginPassword, errorLoginPassword);
-
-                if (!identificador) {
-                    mostrarError(loginUsuario, errorLoginUsuario, 'Ingresa tu usuario o correo para recuperar la clave.');
-                    mostrarFeedback(feedbackLogin, 'Necesitamos tu usuario o correo para buscar la cuenta.', 'error');
-                    return;
-                }
-
-                const usuarioRecuperado = recuperarUsuarioPorIdentificador(identificador);
-
-                if (!usuarioRecuperado) {
-                    mostrarError(loginUsuario, errorLoginUsuario, 'No existe una cuenta asociada a ese dato.');
-                    mostrarFeedback(feedbackLogin, 'No encontramos una cuenta registrada con ese usuario o correo.', 'error');
-                    return;
-                }
-
-                loginPassword.value = usuarioRecuperado.password;
-                ocultarPassword(loginPassword);
-                mostrarFeedback(
-                    feedbackLogin,
-                    'Clave recuperada correctamente. Tu contrasena registrada es: ' + usuarioRecuperado.password,
-                    'exito'
-                );
+                window.location.href = 'recuperar.html';
             });
         }
 
@@ -453,6 +521,101 @@ document.addEventListener('DOMContentLoaded', function () {
         loginPassword.addEventListener('blur', function () {
             setTimeout(function () {
                 ocultarPassword(loginPassword);
+            }, 120);
+        });
+    }
+
+    const formularioRecuperar = document.getElementById('formularioRecuperar');
+    const feedbackRecuperar = document.getElementById('recuperarFeedback');
+
+    if (formularioRecuperar) {
+        const recuperarUsuario = document.getElementById('recuperarUsuario');
+        const recuperarPassword = document.getElementById('recuperarPassword');
+        const recuperarConfirmarPassword = document.getElementById('recuperarConfirmarPassword');
+        const errorRecuperarUsuario = document.getElementById('errorRecuperarUsuario');
+        const errorRecuperarPassword = document.getElementById('errorRecuperarPassword');
+        const errorRecuperarConfirmarPassword = document.getElementById('errorRecuperarConfirmarPassword');
+
+        formularioRecuperar.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let esValido = true;
+            const identificador = recuperarUsuario.value.trim();
+            const nuevaPassword = recuperarPassword.value;
+            const confirmarPassword = recuperarConfirmarPassword.value;
+
+            if (!identificador) {
+                mostrarError(recuperarUsuario, errorRecuperarUsuario, 'Ingresa tu usuario o correo.');
+                esValido = false;
+            } else if (!recuperarUsuarioPorIdentificador(identificador)) {
+                mostrarError(recuperarUsuario, errorRecuperarUsuario, 'No encontramos una cuenta con ese dato.');
+                esValido = false;
+            } else {
+                limpiarError(recuperarUsuario, errorRecuperarUsuario);
+            }
+
+            if (!nuevaPassword) {
+                mostrarError(recuperarPassword, errorRecuperarPassword, 'Ingresa una nueva contrasena.');
+                esValido = false;
+            } else if (nuevaPassword.length < 6 || nuevaPassword.length > 18) {
+                mostrarError(recuperarPassword, errorRecuperarPassword, 'La contrasena debe tener entre 6 y 18 caracteres.');
+                esValido = false;
+            } else if (!passwordSegura(nuevaPassword)) {
+                mostrarError(recuperarPassword, errorRecuperarPassword, 'La contrasena debe incluir una mayuscula y un numero.');
+                esValido = false;
+            } else {
+                limpiarError(recuperarPassword, errorRecuperarPassword);
+            }
+
+            if (!confirmarPassword) {
+                mostrarError(recuperarConfirmarPassword, errorRecuperarConfirmarPassword, 'Confirma tu nueva contrasena.');
+                esValido = false;
+            } else if (nuevaPassword !== confirmarPassword) {
+                mostrarError(recuperarConfirmarPassword, errorRecuperarConfirmarPassword, 'Las contrasenas deben ser iguales.');
+                esValido = false;
+            } else {
+                limpiarError(recuperarConfirmarPassword, errorRecuperarConfirmarPassword);
+            }
+
+            if (!esValido) {
+                mostrarFeedback(feedbackRecuperar, 'Revisa los campos marcados antes de continuar.', 'error');
+                return;
+            }
+
+            const resultadoRecuperacion = actualizarPasswordUsuario(identificador, nuevaPassword);
+
+            if (!resultadoRecuperacion.ok) {
+                mostrarFeedback(feedbackRecuperar, resultadoRecuperacion.mensaje, 'error');
+                return;
+            }
+
+            mostrarFeedback(feedbackRecuperar, resultadoRecuperacion.mensaje, 'exito');
+
+            setTimeout(function () {
+                window.location.href = 'loguin.html';
+            }, 1400);
+        });
+
+        formularioRecuperar.addEventListener('reset', function () {
+            setTimeout(function () {
+                limpiarEstado(recuperarUsuario, errorRecuperarUsuario);
+                limpiarEstado(recuperarPassword, errorRecuperarPassword);
+                limpiarEstado(recuperarConfirmarPassword, errorRecuperarConfirmarPassword);
+                ocultarPassword(recuperarPassword);
+                ocultarPassword(recuperarConfirmarPassword);
+                mostrarFeedback(feedbackRecuperar, '');
+            }, 0);
+        });
+
+        recuperarPassword.addEventListener('blur', function () {
+            setTimeout(function () {
+                ocultarPassword(recuperarPassword);
+            }, 120);
+        });
+
+        recuperarConfirmarPassword.addEventListener('blur', function () {
+            setTimeout(function () {
+                ocultarPassword(recuperarConfirmarPassword);
             }, 120);
         });
     }
@@ -501,5 +664,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = 'index.html';
     });
 
+    asegurarUsuarioAdmin();
+    protegerVistaAdmin();
     actualizarNavbarSesion();
 });
