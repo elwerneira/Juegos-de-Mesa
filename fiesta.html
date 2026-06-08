@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <title>Fiesta | TableTop ET</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <header class="site-header">
+<body class="min-vh-100">
+    <header class="site-header container-fluid">
         <div class="logo">
             <a href="index.html" class="logo-link">
-                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image">
+                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image img-fluid">
             </a>
         </div>
 
@@ -21,7 +23,7 @@
         </button>
 
         <nav id="site-navigation">
-            <ul>
+            <ul class="mb-0">
                 <li><a href="index.html#inicio">Inicio</a></li>
                 <li><a href="index.html#top">Top Ventas</a></li>
                 <li class="dropdown">
@@ -38,7 +40,7 @@
         </nav>
     </header>
 
-    <section class="page-hero">
+    <section class="page-hero container-fluid">
         <div class="hero-content">
             <h2>Categoria Fiesta</h2>
             <p>Juegos de ritmo rapido, creatividad y muchas risas para grupos grandes o reuniones.</p>
@@ -46,7 +48,7 @@
         </div>
     </section>
 
-    <section class="productos">
+    <section class="productos container-xxl">
         <div class="section-heading section-heading-left">
             <span class="eyebrow">Categoria</span>
             <h2>Juegos para fiestas</h2>
@@ -58,6 +60,7 @@
                 <img src="img/uno.png" alt="Uno">
                 <h3>Uno Party</h3>
                 <p>La clasica competencia de colores con reglas para grupos mas grandes.</p>
+                <div class="estado-descuento estado-sin-descuento">Sin descuentos</div>
                 <div class="card-acciones">
                     <span>$9.990</span>
                     <button onclick="agregarCarrito('Uno ')">Agregar al carrito</button>
@@ -82,6 +85,7 @@
                 <img src="img/pictionary.png" alt="Pictionary Air">
                 <h3>Pictionary Air</h3>
                 <p>Dibuja en el aire y desafia a tu equipo a adivinar bajo presion.</p>
+                <div class="estado-descuento estado-sin-descuento">Sin descuentos</div>
                 <div class="card-acciones">
                     <span>$21.990</span>
                     <button onclick="agregarCarrito('Pictionary Air')">Agregar al carrito</button>
@@ -90,6 +94,7 @@
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

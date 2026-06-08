@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel ADM | TableTop ET</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <header class="site-header">
+<body class="min-vh-100">
+    <header class="site-header container-fluid">
         <div class="logo">
             <a href="index.html" class="logo-link">
-                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image">
+                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image img-fluid">
             </a>
         </div>
 
@@ -21,7 +23,7 @@
         </button>
 
         <nav id="site-navigation">
-            <ul>
+            <ul class="mb-0">
                 <li><a href="index.html#inicio">Inicio</a></li>
                 <li><a href="index.html#top">Top Ventas</a></li>
                 <li class="dropdown">
@@ -38,39 +40,174 @@
         </nav>
     </header>
 
-    <section class="formulario-seccion">
-        <div class="formulario-card">
+    <section class="formulario-seccion admin-seccion container-xxl">
+        <div class="formulario-card admin-card shadow-lg">
             <div class="section-heading section-heading-left">
                 <span class="eyebrow">Panel ADM</span>
                 <h2>Administracion de TableTop ET</h2>
-                <p>Este espacio esta reservado para la cuenta administradora y sirve como base para gestionar el sitio.</p>
+                <p>Este espacio esta reservado para la cuenta administradora y ahora te permite gestionar usuarios y clientes registrados.</p>
             </div>
 
-            <div class="contenedor-categorias">
-                <article class="categoria-link">
-                    <div class="categoria-link-texto">
-                        <h3>Acceso exclusivo</h3>
-                        <p>Solo las sesiones con rol administrador pueden entrar a esta vista.</p>
-                    </div>
-                </article>
+            <div class="admin-shell">
+                <aside class="admin-sidebar" aria-label="Secciones del panel">
+                    <span class="admin-sidebar-titulo">Gestion</span>
+                    <button type="button" class="admin-menu-opcion activo" data-admin-view="resumen" aria-pressed="true">
+                        <span class="admin-menu-indicador"></span>
+                        <span><strong>Resumen</strong><small>Vista general</small></span>
+                    </button>
+                    <button type="button" class="admin-menu-opcion" data-admin-view="usuarios" aria-pressed="false">
+                        <span class="admin-menu-indicador"></span>
+                        <span><strong>Usuarios</strong><small>Cuentas y roles</small></span>
+                    </button>
+                    <button type="button" class="admin-menu-opcion" data-admin-view="productos" aria-pressed="false">
+                        <span class="admin-menu-indicador"></span>
+                        <span><strong>Productos</strong><small>Catalogo y stock</small></span>
+                    </button>
+                </aside>
 
-                <article class="categoria-link">
-                    <div class="categoria-link-texto">
-                        <h3>Proximo paso</h3>
-                        <p>Aqui podemos agregar gestion de usuarios, inventario, pedidos o reportes.</p>
-                    </div>
-                </article>
+                <div class="admin-contenido">
+                    <section class="admin-vista activo" data-admin-panel="resumen">
+                        <div class="section-heading section-heading-left admin-section-head">
+                            <span class="eyebrow">Resumen</span>
+                            <h3>Estado general</h3>
+                            <p>Consulta rapidamente la informacion principal antes de gestionar el sitio.</p>
+                        </div>
 
-                <article class="categoria-link">
-                    <div class="categoria-link-texto">
-                        <h3>Cuenta recomendada</h3>
-                        <p>Usuario: <strong>admin</strong> | Correo: <strong>admin@tabletopet.cl</strong></p>
-                    </div>
-                </article>
+                        <div class="admin-resumen-grid">
+                            <div class="admin-resumen-bloque admin-resumen-metricas">
+                                <h3>Usuarios</h3>
+                                <div class="admin-metricas-grid">
+                                    <div class="admin-metrica">
+                                        <span>Total</span>
+                                        <strong id="adminUsuariosCantidad">0</strong>
+                                    </div>
+                                    <div class="admin-metrica admin-metrica-activa">
+                                        <span>Activas</span>
+                                        <strong id="adminUsuariosActivos">0</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="admin-resumen-bloque admin-resumen-metricas">
+                                <h3>Inventario</h3>
+                                <div class="admin-metricas-grid">
+                                    <div class="admin-metrica">
+                                        <span>Productos</span>
+                                        <strong id="adminProductosCantidad">0</strong>
+                                    </div>
+                                    <div class="admin-metrica admin-metrica-activa">
+                                        <span>Stock total</span>
+                                        <strong id="adminStockTotal">0</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="admin-resumen-bloque admin-cuenta-resumen">
+                                <span class="eyebrow">Cuenta ADM</span>
+                                <h3>Sesion administrativa</h3>
+                                <p class="admin-resumen-texto">Desde este panel puedes gestionar cuentas, roles, productos y disponibilidad.</p>
+                                <div class="admin-credenciales">
+                                    <strong>Usuario: admin</strong>
+                                    <span>Correo: admin@tabletopet.cl</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="admin-vista" data-admin-panel="usuarios" hidden>
+                        <div class="section-heading section-heading-left admin-section-head">
+                            <span class="eyebrow">Usuarios</span>
+                            <h3>Mantenedor de usuarios y clientes</h3>
+                            <p>Revisa cuentas, cambia su rol y bloquea o habilita el acceso al sitio.</p>
+                        </div>
+                        <div class="formulario-feedback" id="adminUsuariosFeedback" aria-live="polite"></div>
+                        <div class="admin-vacio" id="adminUsuariosVacio" hidden>
+                            <h3>No hay usuarios registrados</h3>
+                            <p>Cuando existan cuentas en el sistema, apareceran aqui para administrarlas.</p>
+                        </div>
+                        <div class="admin-usuarios-lista" id="adminUsuariosLista"></div>
+                    </section>
+
+                    <section class="admin-vista" data-admin-panel="productos" hidden>
+                        <div class="section-heading section-heading-left admin-section-head">
+                            <span class="eyebrow">Productos</span>
+                            <h3>Mantenedor de productos e inventario</h3>
+                            <p>Crea productos nuevos o actualiza sus precios, ofertas, stock y disponibilidad.</p>
+                        </div>
+
+                        <div class="admin-productos-layout">
+                            <div class="admin-producto-editor">
+                                <div class="admin-bloque-titulo">
+                                    <span>Editor</span>
+                                    <h4>Datos del producto</h4>
+                                </div>
+                                <form class="formulario-registro admin-producto-form" id="adminProductoForm" novalidate>
+                                    <input type="hidden" id="productoId">
+                                    <div>
+                                        <label for="productoNombre">Nombre</label>
+                                        <input type="text" id="productoNombre" placeholder="Nombre del juego" required>
+                                    </div>
+                                    <div>
+                                        <label for="productoCategoria">Categoria</label>
+                                        <select id="productoCategoria" required>
+                                            <option value="">Selecciona una categoria</option>
+                                            <option value="Estrategia">Estrategia</option>
+                                            <option value="Familiares">Familiares</option>
+                                            <option value="Fiesta">Fiesta</option>
+                                            <option value="Infantiles">Infantiles</option>
+                                            <option value="Top ventas">Top ventas</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="productoPrecio">Precio actual</label>
+                                        <input type="number" id="productoPrecio" min="1" required>
+                                    </div>
+                                    <div>
+                                        <label for="productoPrecioOriginal">Precio original con oferta</label>
+                                        <input type="number" id="productoPrecioOriginal" min="1" placeholder="Opcional">
+                                    </div>
+                                    <div>
+                                        <label for="productoStock">Stock</label>
+                                        <input type="number" id="productoStock" min="0" required>
+                                    </div>
+                                    <div>
+                                        <label for="productoEstado">Estado</label>
+                                        <select id="productoEstado">
+                                            <option value="activo">Activo</option>
+                                            <option value="inactivo">Inactivo</option>
+                                        </select>
+                                    </div>
+                                    <div class="admin-producto-campo-doble">
+                                        <label for="productoImagen">Ruta de imagen</label>
+                                        <input type="text" id="productoImagen" placeholder="img/juego.png" required>
+                                    </div>
+                                    <div class="admin-producto-campo-doble">
+                                        <label for="productoOferta">Texto de oferta</label>
+                                        <input type="text" id="productoOferta" placeholder="Ejemplo: Oferta 15% (opcional)">
+                                    </div>
+                                    <div class="acciones-formulario admin-producto-acciones admin-producto-campo-ancho">
+                                        <button type="submit">Guardar producto</button>
+                                        <button type="button" class="btn-secondary" id="btnCancelarProducto" hidden>Cancelar edicion</button>
+                                    </div>
+                                    <div class="formulario-feedback admin-producto-campo-ancho" id="adminProductosFeedback" aria-live="polite"></div>
+                                </form>
+                            </div>
+
+                            <div class="admin-productos-listado">
+                                <div class="admin-bloque-titulo">
+                                    <span>Inventario</span>
+                                    <h4>Productos registrados</h4>
+                                </div>
+                                <div class="admin-productos-lista" id="adminProductosLista"></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </div>
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

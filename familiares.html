@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <title>Familiares | TableTop ET</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <header class="site-header">
+<body class="min-vh-100">
+    <header class="site-header container-fluid">
         <div class="logo">
             <a href="index.html" class="logo-link">
-                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image">
+                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image img-fluid">
             </a>
         </div>
 
@@ -21,7 +23,7 @@
         </button>
 
         <nav id="site-navigation">
-            <ul>
+            <ul class="mb-0">
                 <li><a href="index.html#inicio">Inicio</a></li>
                 <li><a href="index.html#top">Top Ventas</a></li>
                 <li class="dropdown">
@@ -38,7 +40,7 @@
         </nav>
     </header>
 
-    <section class="page-hero">
+    <section class="page-hero container-fluid">
         <div class="hero-content">
             <h2>Categoria Familiares</h2>
             <p>Partidas faciles de aprender, con dinamicas rapidas y mucha diversion para compartir.</p>
@@ -46,7 +48,7 @@
         </div>
     </section>
 
-    <section class="productos">
+    <section class="productos container-xxl">
         <div class="section-heading section-heading-left">
             <span class="eyebrow">Categoria</span>
             <h2>Juegos para reunir a todos</h2>
@@ -58,6 +60,7 @@
                 <img src="img/basta.png" alt="Basta">
                 <h3>Basta</h3>
                 <p>Desafia tu rapidez con categorias divertidas y partidas dinamicas.</p>
+                <div class="estado-descuento estado-sin-descuento">Sin descuentos</div>
                 <div class="card-acciones">
                     <span>$8.600</span>
                     <button onclick="agregarCarrito('Basta')">Agregar al carrito</button>
@@ -82,6 +85,7 @@
                 <img src="img/EXPLODING KITTENS.png" alt="EXPLODING KITTENS">
                 <h3>EXPLODING KITTENS</h3>
                 <p>Entretenido y emocionante juego de cartas que tiene mucho que ver con la ruleta rusa.</p>
+                <div class="estado-descuento estado-sin-descuento">Sin descuentos</div>
                 <div class="card-acciones">
                     <span>$19.990</span>
                     <button onclick="agregarCarrito('EXPLODING KITTENS')">Agregar al carrito</button>
@@ -90,6 +94,7 @@
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

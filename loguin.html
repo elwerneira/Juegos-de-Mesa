@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | TableTop ET</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-     <header class="site-header">
+<body class="min-vh-100">
+     <header class="site-header container-fluid">
         <div class="logo">
             <a href="index.html" class="logo-link">
-                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image">
+                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image img-fluid">
             </a>
         </div>
 
@@ -21,7 +23,7 @@
         </button>
 
         <nav id="site-navigation">
-            <ul>
+            <ul class="mb-0">
                 <li><a href="index.html#inicio">Inicio</a></li>
                 <li><a href="index.html#top">Top Ventas</a></li>
                 <li class="dropdown">
@@ -38,22 +40,22 @@
         </nav>
     </header>
 
-    <section class="formulario-seccion">
-        <div class="formulario-card">
+    <section class="formulario-seccion container-xl">
+        <div class="formulario-card shadow-lg">
             <div class="section-heading section-heading-left">
                 <span class="eyebrow">Acceso</span>
                 <h2>Iniciar sesion</h2>
                 <p>Ingresa con tu usuario registrado para continuar en TableTop ET.</p>
             </div>
 
-            <form class="formulario-registro" id="loginForm" novalidate>
-                <div class="campo-formulario">
+            <form class="formulario-registro row g-3" id="loginForm" novalidate>
+                <div class="campo-formulario col-12">
                     <label for="loginUsuario" class="form-label">Usuario o correo</label>
                     <input type="text" id="loginUsuario" name="loginUsuario" placeholder="Ingresa tu usuario o correo">
                     <div class="mensaje-error" id="errorLoginUsuario"></div>
                 </div>
 
-                <div class="campo-formulario">
+                <div class="campo-formulario col-12">
                     <label for="loginPassword" class="form-label">Contrasena</label>
                     <div class="campo-password">
                         <input type="password" id="loginPassword" name="loginPassword" placeholder="Ingresa tu contrasena">
@@ -68,7 +70,7 @@
                     <div class="mensaje-error" id="errorLoginPassword"></div>
                 </div>
 
-                <div class="acciones-formulario">
+                <div class="acciones-formulario d-flex flex-column flex-md-row gap-3">
                     <button type="submit" class="btn btn-primary">Ingresar</button>
                     <button type="button" class="btn btn-secondary">Recuperar Clave</button>
                     <a class="btn btn-registro" href="formulario.html">Registrarse</a>
@@ -79,6 +81,7 @@
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

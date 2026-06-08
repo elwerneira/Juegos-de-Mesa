@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <title>TableTop ET</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <header class="site-header">
+<body class="min-vh-100">
+    <header class="site-header container-fluid">
         <div class="logo">
             <a href="index.html" class="logo-link">
-                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image">
+                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image img-fluid">
             </a>
         </div>
 
@@ -21,7 +23,7 @@
         </button>
 
         <nav id="site-navigation">
-            <ul>
+            <ul class="mb-0">
                 <li><a href="index.html#inicio">Inicio</a></li>
                 <li><a href="index.html#top">Top Ventas</a></li>
                 <li class="dropdown">
@@ -38,14 +40,14 @@
         </nav>
     </header>
 
-    <section class="hero" id="inicio">
+    <section class="hero container-fluid" id="inicio">
         <div class="hero-content">
             <h2>Los mejores juegos de mesa para toda la familia</h2>
             <p>Descubre diversion, estrategia y aventuras increibles.</p>
         </div>
     </section>
 
-    <section class="productos" id="top">
+    <section class="productos container-xxl" id="top">
         <div class="section-heading">
             <span class="eyebrow">Selecciones destacadas</span>
             <h2>Top de los mas comprados</h2>
@@ -71,6 +73,7 @@
                 <img src="img/monopoly.png" alt="Monopoly">
                 <h3>Monopoly</h3>
                 <p>Compra, vende y arma tu imperio inmobiliario en cada partida.</p>
+                <div class="estado-descuento estado-sin-descuento">Sin descuentos</div>
                 <div class="card-acciones">
                     <span>$24.990</span>
                     <button onclick="agregarCarrito('Monopoly')">Agregar al carrito</button>
@@ -81,6 +84,7 @@
                 <img src="img/basta.png" alt="Basta">
                 <h3>Basta</h3>
                 <p>Rapidez mental y mucha creatividad para ganar antes que el resto.</p>
+                <div class="estado-descuento estado-sin-descuento">Sin descuentos</div>
                 <div class="card-acciones">
                     <span>$8.600</span>
                     <button onclick="agregarCarrito('Basta')">Agregar al carrito</button>
@@ -89,7 +93,7 @@
         </div>
     </section>
 
-    <section class="categorias" id="categorias">
+    <section class="categorias container-xxl" id="categorias">
         <div class="section-heading">
             <span class="eyebrow">Explora el catalogo</span>
             <h2>Categorias de juegos</h2>
@@ -131,6 +135,7 @@
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

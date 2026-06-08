@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis compras | TableTop ET</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-vh-100">
+    <header class="site-header container-fluid">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image img-fluid">
+            </a>
+        </div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Abrir menu">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="site-navigation">
+            <ul class="mb-0">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#top">Top Ventas</a></li>
+                <li class="dropdown">
+                    <a href="index.html#categorias">Categorias</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="estrategia.html">Estrategia</a></li>
+                        <li><a href="familiares.html">Familiares</a></li>
+                        <li><a href="fiesta.html">Fiesta</a></li>
+                        <li><a href="infantiles.html">Infantiles</a></li>
+                    </ul>
+                </li>
+                <li><a href="loguin.html">Iniciar sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="formulario-seccion container-xxl" id="misComprasPagina">
+        <div class="section-heading">
+            <span class="eyebrow">Historial</span>
+            <h2>Mis compras</h2>
+            <p>Aqui puedes revisar las compras confirmadas con tu cuenta.</p>
+        </div>
+
+        <div class="formulario-feedback compras-feedback" id="comprasFeedback" aria-live="polite"></div>
+        <div class="carrito-vacio" id="comprasVacio" hidden>
+            <h3>Aun no tienes compras</h3>
+            <p>Cuando finalices una compra desde el carrito, su detalle aparecera aqui.</p>
+            <a href="index.html#top" class="btn btn-primary">Explorar juegos</a>
+        </div>
+        <div class="compras-lista" id="comprasLista"></div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

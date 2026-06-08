@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <title>Carrito | TableTop ET</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-vh-100">
+    <header class="site-header container-fluid">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="img/logo-navbar.png" alt="Logo de TableTop ET" class="logo-image img-fluid">
+            </a>
+        </div>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="site-navigation">
+            <ul class="mb-0">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#top">Top Ventas</a></li>
+                <li class="dropdown">
+                    <a href="index.html#categorias">Categorias</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="estrategia.html">Estrategia</a></li>
+                        <li><a href="familiares.html">Familiares</a></li>
+                        <li><a href="fiesta.html">Fiesta</a></li>
+                        <li><a href="infantiles.html">Infantiles</a></li>
+                    </ul>
+                </li>
+                <li><a href="loguin.html">Iniciar sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="formulario-seccion container-xxl" id="carritoPagina">
+        <div class="section-heading">
+            <span class="eyebrow">Compra</span>
+            <h2>Tu carrito</h2>
+            <p>Revisa tus juegos seleccionados, ajusta cantidades y prepara tu proxima partida.</p>
+        </div>
+
+        <div class="carrito-grid">
+            <div class="carrito-lista-panel">
+                <div class="carrito-vacio" id="carritoVacio">
+                    <h3>Aun no agregas juegos</h3>
+                    <p>Explora el catalogo y arma tu carrito con los titulos que mas te gusten.</p>
+                    <a href="index.html#top" class="btn btn-primary">Ver juegos</a>
+                </div>
+
+                <div id="carritoLista" class="carrito-lista"></div>
+            </div>
+
+            <aside class="carrito-resumen" id="carritoResumen" hidden>
+                <span class="eyebrow">Resumen</span>
+                <h3>Total de la compra</h3>
+                <p class="carrito-resumen-cantidad" id="carritoCantidad">0 productos</p>
+                <strong class="carrito-resumen-total" id="carritoTotal">$0</strong>
+                <button type="button" class="btn btn-primary w-100" id="btnFinalizarCompra">Finalizar compra</button>
+                <button type="button" class="btn btn-secondary w-100" id="btnVaciarCarrito">Vaciar carrito</button>
+            </aside>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
